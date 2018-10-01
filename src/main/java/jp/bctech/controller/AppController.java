@@ -10,4 +10,9 @@ public class AppController {
 	public String error() {
 		return "error";
 	}
+	
+	@RequestMapping(value = "/menu", method = RequestMethod.GET)
+	public String menu() {
+		return "menu";
+	}
 }
