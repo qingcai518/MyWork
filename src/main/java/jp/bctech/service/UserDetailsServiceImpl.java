@@ -37,4 +37,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		
 		return new LoginUser(user);
 	}
+	
+	public User save(User user) {
+		return repository.save(user);
+	}
 }
