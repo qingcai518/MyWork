@@ -33,6 +33,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			throw new UsernameNotFoundException("user not found: " + email);
 		}
 		
-		return new Login(user);
+		return new LoginUser(user);
 	}
 }
