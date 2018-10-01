@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// no login settings.
 		http.authorizeRequests()
-		.antMatchers("/", "/login").permitAll()
+		.antMatchers("/", "/login", "/register").permitAll()
 		.anyRequest().authenticated();
 		
 		// login settings.

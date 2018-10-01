@@ -1,6 +1,7 @@
 package jp.bctech.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,30 +19,21 @@ public class UserController {
 	public String login() {
 		return "login";
 	}
-
-	@RequestMapping(method = RequestMethod.POST, value = "/register")
-	public User create(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password,
-			@RequestParam(name = "name") String name) {
-		
-		System.out.println("==== user name : " + name);
-		System.out.println("==== user password : " + password);
-		System.out.println("==== user name: " + name);
-		
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/register")
+	public User create(
+			@RequestParam(name = "email") String email,
+			@RequestParam(name = "password") String password,
+			@RequestParam(name = "name") String name
+			) {
 		User user = new User();
 		user.setName(name);
 		user.setEmail(email);
-		user.setPassword(password);
 		
-		User result = service.save(user);
-		System.out.println(result.getName());
-		System.out.println(result.getPassword());
-		System.out.println(result.getEmail());
-		System.out.println(result.getCreatedAt());
-		System.out.println(result.getUpdateAt());
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encodedPw = encoder.encode(password);
+		user.setPassword(encodedPw);
 		
-		
-		
-		return result;
-		
+		return service.save(user);
 	}
 }
