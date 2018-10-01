@@ -16,52 +16,52 @@ public class User implements Serializable {
 	private String name;
 	private String createdAt;
 	private String updateAt;
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}
-
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
-
+	
 	public String getCreatedAt() {
 		return createdAt;
 	}
-
+	
 	public void setUpdateAt(String updateAt) {
 		this.updateAt = updateAt;
 	}
-
-	public String getUpateAt() {
+	
+	public String getUpdateAt() {
 		return updateAt;
 	}
 }
