@@ -15,10 +15,11 @@ public class SampleAuthenticationFailureHandler implements AuthenticationFailure
 	public void onAuthenticationFailure(HttpServletRequest request,
 			HttpServletResponse response, AuthenticationException exception)
 			throws IOException, ServletException {
-		String errorMsg = "";
-		if (exception instanceof BadCredentialsException) {
-			errorMsg = "need login";
-		}
+		
+		String errorMsg = exception.getMessage();
+		
+		System.out.println("==== fail to login =====");
+		System.out.println(exception);
 		
 		response.sendRedirect(request.getContextPath() + "/" + request.getParameter("identifier") + "/login?error=" + errorMsg);
 	}
